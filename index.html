@@ -10,20 +10,32 @@
 </head>
 <body>
     <div class="container">
+        <div class="weather-app-wrapper">
         <div class="weather-app">
+        <div class="overview">
             <h1>New York</h1>
             <ul>
                 <li>Friday</li>
                 <li>Clear</li>
             </ul>
-
+        </div>
             <div class="row">
                 <div class="col-md-6">
-                    <img src="https://ssl.gstatic.com/onebox/weather/64/sunny.png" alt="clear"/>
-
-                    12C | F
+                    <div class="clearfix weather-temp">
+                        <img src="https://ssl.gstatic.com/onebox/weather/64/sunny.png" alt="clear"
+                        class="float-left"
+                        />
+                        
+                            <strong>12</strong>
+                            <span class="units"
+                    ><a href="#" id="celsius-link" class="active">°C</a> |
+                    <a href="#" id="fahrenheit-link">°F</a></span
+                  >
+                        <!-- 12 °C | °F -->
+                        
+                    </div>
                 </div>
-
+            
                 <div class="col-md-6">
                     <ul>
                         <li>Precipitation: 0%</lil>
@@ -35,11 +47,12 @@
             </div>
 
             
-            <footer> <a href="https://github.com/duraibim/Vanilla-Weather_App" target="_blank"> Open-source code</a> by Manal Alduraibi🐞</footer> 
-
-            <script src="src/script.js"></script>
+            
+        </div>
+        <footer> <a href="https://github.com/duraibim/Vanilla-Weather_App" target="_blank"> Open-source code</a> by Manal Alduraibi🐞</footer> 
         </div>
     </div>
+    <script src="src/script.js"></script>
 
 </body>
 </html>
