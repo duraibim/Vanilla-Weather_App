@@ -62,3 +62,12 @@ li{
 li::first-letter{
     text-transform: capitalize;
 }
+
+.icon {
+    height: 64px;
+    width: 64px;
+  }
+
+.search-form {
+    margin-bottom: 20px;
+  }
