@@ -23,7 +23,20 @@ function formatDate(timestamp){
     ];
     let day = days[date.getDay()];
     return `${day} ${hours}:${minutes}`
+}
 
+function formatHours(timestamp){
+    let date = new Date(timestamp);
+    let hours = date.getHours();
+  if (hours < 10) {
+    hours = `0${hours}`;
+  }
+    let minutes = date.getMinutes();
+  if (minutes < 10) {
+    minutes = `0${minutes}`;
+  }
+
+  return `${hours}:${minutes}`;
 }
 
 function showWeather(response) {
@@ -69,10 +82,37 @@ function showWeather(response) {
 
 }
 
+function showForecast(response){
+    let forecastElement = document.querySelector("#forecast");
+    forecastElement.innerHTML = null;
+    let forecast = null;
+
+    for (let index = 0; index < 6; index++){
+        forecast = response.data.list[index];
+        forecastElement.innerHTML +=`
+        <div class="col-2">
+            <h3> 
+            ${formatHours(forecast.dt * 1000)} </h3>
+            <img
+            src="http://openweathermap.org/img/wn/${forecast.weather[0].icon}@2x.png"
+            alt=""
+            />
+            <div calss="weather-forcast-temp"> <p>
+                <strong>H:${Math.round(forecast.main.temp_max)}°</strong>  L:${Math.round(forecast.main.temp_min)}°
+                </p></div>
+        </div>
+    `;
+    }
+
+}
+
 function search(city) {
   let apiKey = "0196dac33373aaa2798921754f07b116";
   let url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
   axios.get(url).then(showWeather);
+
+  url = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${apiKey}&units=metric`;
+  axios.get(url).then(showForecast);
 }
 
 function handleSubmit(event) {

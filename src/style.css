@@ -44,6 +44,25 @@ h1 {
     margin-bottom: 0;
    }
 
+h3{
+    color: slategray;
+    display: block;
+    font-family: arial,sans-serif;
+    font-size: 16px;
+    margin-top: 20px;
+    padding: 0;
+    text-align: center;
+    height: auto;
+}
+
+p {
+    text-align: center;
+    color: slategray;
+    font-size: 12px;
+    height: auto;
+    font-family: arial,sans-serif;
+ }
+
 ul{
     margin: 0;
     padding: 0;
@@ -64,6 +83,9 @@ li::first-letter{
 }
 
 .icon {
+    display: block;
+    margin-bottom: 20px;
+    padding: 0;
     height: 64px;
     width: 64px;
   }
@@ -80,3 +102,12 @@ li::first-letter{
   .weather-temp .active:hover {
     text-decoration: none;
   }
+
+  .weather-forcast img{
+    display: block;
+    margin: auto;
+    padding: 0;
+    height: 48px;
+    width: 48px;
+  }
+
