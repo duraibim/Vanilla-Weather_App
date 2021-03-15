@@ -50,14 +50,28 @@ function showWeather(response) {
 
     let dateElement = document.querySelector("#date");
     dateElement.innerHTML = formatDate(response.data.dt * 1000);
+
+    // let highElement = document.querySelector("#high");
+    // highElement.innerHTML= Math.round(response.data.main.temp_min);
+
+    // let lowElement = document.querySelector("#low");
+    // lowElement.innerHTML= Math.round(response.data.main.temp_max);
+
+    let iconElement = document.querySelector("#icon");
+    iconElement.setAttribute(
+        "src",
+        `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+        );
+      iconElement.setAttribute("alt", response.data.weather[0].description);
+    
+/// setAttribute --> to update the icon's src and alt///
+
 }
 
 
 let apiKey = "0196dac33373aaa2798921754f07b116";
-let url = `https://api.openweathermap.org/data/2.5/weather?q=Jeddah&appid=${apiKey}&units=metric`;
-
-
-// let url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+let city = "London";
+let url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
 
 axios.get(url).then(showWeather);
 
