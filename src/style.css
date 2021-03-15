@@ -71,3 +71,12 @@ li::first-letter{
 .search-form {
     margin-bottom: 20px;
   }
+
+  .weather-temp .active {
+    color: rgb(33, 33, 33);
+    cursor: default;
+  }
+  
+  .weather-temp .active:hover {
+    text-decoration: none;
+  }
