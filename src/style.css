@@ -53,6 +53,7 @@ li{
     color: slategray;
     display: block;
     font-family: arial,sans-serif;
+    text-transform: capitalize;
     font-size: 16px;
     text-align: left;
     margin: 0;
