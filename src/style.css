@@ -37,6 +37,8 @@
 
 body{
     font-family:arial,sans-serif;
+    color: rgb(122, 131, 141);
+    background-color: rgb(224, 234, 238);
 }
 h1 {
     color: rgb(122, 131, 141);
@@ -115,4 +117,8 @@ li::first-letter{
 
   .weather-forcast .row .col-2{
     border: rgb(33, 33, 33);
+}
+
+.footer{
+    text-align: center;
 }

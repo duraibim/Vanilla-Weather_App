@@ -1,43 +1,36 @@
 
-
-
-
-function formatDate(timestamp){
+function formatDate(timestamp) {
     let date = new Date(timestamp);
-    let hours = date.getHours();
-  if (hours < 10) {
-    hours = `0${hours}`;
-  }
-    let minutes = date.getMinutes();
-  if (minutes < 10) {
-    minutes = `0${minutes}`;
-  }
+  
     let days = [
-        "Sunday",
-        "Monday",
-        "Tuesday",
-        "Wednesday",
-        "Thursday",
-        "Friday",
-        "Saturday"
+      "Sunday",
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday",
+      "Saturday"
     ];
     let day = days[date.getDay()];
-    return `${day} ${hours}:${minutes}`
-}
-
-function formatHours(timestamp){
+    return `${day} ${formatHours(timestamp)}`;
+  }
+  
+  function formatHours(timestamp) {
     let date = new Date(timestamp);
     let hours = date.getHours();
-  if (hours < 10) {
-    hours = `0${hours}`;
-  }
+    if (hours < 10) {
+      hours = `0${hours}`;
+    }
     let minutes = date.getMinutes();
-  if (minutes < 10) {
-    minutes = `0${minutes}`;
+    if (minutes < 10) {
+      minutes = `0${minutes}`;
+    }
+  
+    return `${hours}:${minutes}`;
   }
 
-  return `${hours}:${minutes}`;
-}
+
+
 
 function showWeather(response) {
 
@@ -91,14 +84,14 @@ function showForecast(response){
         forecast = response.data.list[index];
         forecastElement.innerHTML +=`
         <div class="col-2">
-            <h3> 
-            ${formatHours(forecast.dt * 1000)} </h3>
+        <h3>
+        ${formatHours(forecast.dt * 1000)}</h3>
             <img
             src="http://openweathermap.org/img/wn/${forecast.weather[0].icon}@2x.png"
             alt=""
             />
             <div calss="weather-forcast-temp"> <p>
-                <strong>H:${Math.round(forecast.main.temp_max)}°</strong>  L:${Math.round(forecast.main.temp_min)}°
+                <strong>H:${Math.round(forecast.main.temp_max)}°</strong> | L:${Math.round(forecast.main.temp_min)}°
                 </p></div>
         </div>
     `;
@@ -150,8 +143,6 @@ let celsiusLink = document.querySelector("#celsius-link");
 celsiusLink.addEventListener("click", showCelsiusTemp);
 
 
-
-
 function currentLocation(position) {
     let lat = position.coords.latitude;
     let lon = position.coords.longitude;
@@ -159,14 +150,15 @@ function currentLocation(position) {
     let url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=metric&appid=${apiKey}`;
   
     axios.get(url).then(showWeather);
-
-    url = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&units=metric&appid=${apiKey}`;
-    axios.get(url).then(showForecast);
   }
   
+  function getCurrentLocation(event){
+    event.preventDefault();
   navigator.geolocation.getCurrentPosition(currentLocation);
+  }
+  
+  
+  let currentButton = document.querySelector("#current-button");
+  currentButton.addEventListener("click", getCurrentLocation);
 
-
-  search(currentLocation);
-
-
+  search("New York");
