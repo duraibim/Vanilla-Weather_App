@@ -150,4 +150,23 @@ let celsiusLink = document.querySelector("#celsius-link");
 celsiusLink.addEventListener("click", showCelsiusTemp);
 
 
-search("London");
+
+
+function currentLocation(position) {
+    let lat = position.coords.latitude;
+    let lon = position.coords.longitude;
+    let apiKey = "0196dac33373aaa2798921754f07b116";
+    let url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=metric&appid=${apiKey}`;
+  
+    axios.get(url).then(showWeather);
+
+    url = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&units=metric&appid=${apiKey}`;
+    axios.get(url).then(showForecast);
+  }
+  
+  navigator.geolocation.getCurrentPosition(currentLocation);
+
+
+  search(currentLocation);
+
+
