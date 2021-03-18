@@ -74,6 +74,7 @@ function showWeather(response) {
 /// setAttribute --> to update the icon's src and alt///
 
 }
+console.log(forecast);
 
 function showForecast(response){
     let forecastElement = document.querySelector("#forecast");
@@ -84,6 +85,7 @@ function showForecast(response){
         forecast = response.data.list[index];
         forecastElement.innerHTML +=`
         <div class="col-2">
+        
         <h3>
         ${formatHours(forecast.dt * 1000)}</h3>
             <img
@@ -143,15 +145,21 @@ let celsiusLink = document.querySelector("#celsius-link");
 celsiusLink.addEventListener("click", showCelsiusTemp);
 
 
-function currentLocation(position) {
+
+  function currentLocation(position) {
     let lat = position.coords.latitude;
     let lon = position.coords.longitude;
     let apiKey = "0196dac33373aaa2798921754f07b116";
     let url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=metric&appid=${apiKey}`;
   
     axios.get(url).then(showWeather);
-  }
+
+    url = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&units=metric&appid=${apiKey}`;
   
+    axios.get(url).then(showForecast);
+  }
+
+
   function getCurrentLocation(event){
     event.preventDefault();
   navigator.geolocation.getCurrentPosition(currentLocation);
