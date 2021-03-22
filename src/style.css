@@ -62,7 +62,7 @@ h3{
 p {
     text-align: center;
     color: slategray;
-    font-size: 12px;
+    font-size: 11px;
     height: auto;
     font-family: arial,sans-serif;
  }
@@ -117,6 +117,13 @@ li::first-letter{
 
   .weather-forcast .row .col-2{
     border: rgb(33, 33, 33);
+}
+
+.border-right {
+  border-right: 1px solid   #adade1;
+}
+.border-right:last-child {
+  border-right: 0;
 }
 
 .footer{

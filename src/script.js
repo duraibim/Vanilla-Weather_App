@@ -76,30 +76,34 @@ function showWeather(response) {
 }
 console.log(forecast);
 
-function showForecast(response){
-    let forecastElement = document.querySelector("#forecast");
-    forecastElement.innerHTML = null;
-    let forecast = null;
 
-    for (let index = 0; index < 6; index++){
-        forecast = response.data.list[index];
-        forecastElement.innerHTML +=`
-        <div class="col-2">
-        
+function showForecast(response) {
+  let forecastElement = document.querySelector("#forecast");
+  forecastElement.innerHTML = null;
+  let forecast = null;
+  for (let index = 0; index < 6; index++) {
+    forecast = response.data.list[index];
+    forecastElement.innerHTML += `
+        <div class="col-2 border-right">
         <h3>
         ${formatHours(forecast.dt * 1000)}</h3>
             <img
-            src="http://openweathermap.org/img/wn/${forecast.weather[0].icon}@2x.png"
+            src="http://openweathermap.org/img/wn/${
+              forecast.weather[0].icon
+            }@2x.png"
             alt=""
             />
             <div calss="weather-forcast-temp"> <p>
-                <strong>H:${Math.round(forecast.main.temp_max)}°</strong> | L:${Math.round(forecast.main.temp_min)}°
+                <strong>H:${Math.round(
+                  forecast.main.temp_max
+                )}°</strong> | L:${Math.round(forecast.main.temp_min)}°
                 </p></div>
         </div>
     `;
-    }
-
+  }
 }
+
+
 
 function search(city) {
   let apiKey = "0196dac33373aaa2798921754f07b116";
